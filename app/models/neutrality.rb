@@ -1,0 +1,2 @@
+class Neutrality < User
+end
