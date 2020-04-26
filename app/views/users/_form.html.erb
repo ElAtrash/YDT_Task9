@@ -21,7 +21,7 @@
   <div class="field">
     <%= form.label :type %>
       <%= form.select(:type) do %>
-        <% [UserTypeForm.select_tag_type_params.each do |t| %>
+        <% UserTypeForm.select_tag_type_params.each do |t| %>
           <%= content_tag(:option, t.first, value: t.last) %>
         <%end%>
       <% end %>
