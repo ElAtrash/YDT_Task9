@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :get_user, only: [:edit, :update, :destroy]
 
   def index
     @users = User.where(:type => params[:type])
@@ -14,12 +15,10 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def create
     @user = User.new(user_params)
-    @user.type = params[:type]
 
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
@@ -29,8 +28,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-
     log_service = LogService.new
     log_service.log_changes(@user)
 
@@ -47,6 +44,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+    def get_user
+      @user = User.find(params[:id])
+    end
 
     def user_params
       params.require(params[:type].try(:downcase) || :user).permit(:type, :login, :email)
