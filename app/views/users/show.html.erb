@@ -24,13 +24,11 @@
 
 <p>
   <% @user.log_type.each do |log| %>
-    <strong>Relationship</strong> changed to:
-    <%= log.first %> 
+    <strong>Relationship</strong> changed from:
+    <%= log.first%> to <%= @user.type%>
     <small><em><%= time_ago_in_words log.last %> ago</em></small><br />
   <% end %> 
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
-
-
