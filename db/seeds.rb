@@ -17,7 +17,8 @@ friend_attributes = []
 10.times do
   friend_data = {
     login: Faker::Internet.unique.username,
-    email: Faker::Internet.unique.email
+    email: Faker::Internet.unique.email,
+    password: Faker::Internet.password(min_length: 6)
   }
 
   friend_attributes << friend_data
@@ -27,7 +28,8 @@ neutrality_attributes = []
 10.times do
   neutrality_data = {
     login: Faker::Internet.unique.username,
-    email: Faker::Internet.unique.email
+    email: Faker::Internet.unique.email,
+    password: Faker::Internet.password(min_length: 6)
   }
 
   neutrality_attributes << neutrality_data
@@ -37,7 +39,8 @@ enemy_attributes = []
 10.times do
   enemy_data = {
     login: Faker::Internet.unique.username,
-    email: Faker::Internet.unique.email
+    email: Faker::Internet.unique.email,
+    password: Faker::Internet.password(min_length: 6)
   }
 
   enemy_attributes << enemy_data
